@@ -89,20 +89,25 @@ void draw(){
     circulo(hora,pt_size);
   }
 
-    // Desenha todos os ponteiros e incrementa seus ângulos
+  // Desenha todos os ponteiros e incrementa seus ângulos
 
-    hor_ptr.x = cx + sin(hor_ptr.angle) * (k*0.5);
-    hor_ptr.y = cy - cos(hor_ptr.angle) * (k*0.5);
-    hor_ptr.angle += (SPEED*PI)/(108000*FPS);
-    pointer(hor_ptr,5);
+  hor_ptr.x = cx + sin(hor_ptr.angle) * (k*0.5);
+  hor_ptr.y = cy - cos(hor_ptr.angle) * (k*0.5);
+  hor_ptr.angle += (SPEED*PI)/(108000*FPS);
+  pointer(hor_ptr,5);
 
-    min_ptr.x = cx + sin(min_ptr.angle) * (k*0.7);
-    min_ptr.y = cy - cos(min_ptr.angle) * (k*0.7);
-    min_ptr.angle += (SPEED*PI)/(1800*FPS);
-    pointer(min_ptr,3);
+  min_ptr.x = cx + sin(min_ptr.angle) * (k*0.7);
+  min_ptr.y = cy - cos(min_ptr.angle) * (k*0.7);
+  min_ptr.angle += (SPEED*PI)/(1800*FPS);
+  pointer(min_ptr,3);
 
-    sec_ptr.x = cx + sin(sec_ptr.angle) * (k*0.9);
-    sec_ptr.y = cy - cos(sec_ptr.angle) * (k*0.9);
-    sec_ptr.angle += (SPEED*PI)/(30*FPS);
-    pointer(sec_ptr,1);
+  sec_ptr.x = cx + sin(sec_ptr.angle) * (k*0.9);
+  sec_ptr.y = cy - cos(sec_ptr.angle) * (k*0.9);
+  sec_ptr.angle += (SPEED*PI)/(30*FPS);
+  pointer(sec_ptr,1);
+
+  // Imprecisão acumulada
+  hor_ptr.angle -= hor_ptr.angle > SPEED*PI ? SPEED*PI : 0;
+  min_ptr.angle -= min_ptr.angle > SPEED*PI ? SPEED*PI : 0;
+  sec_ptr.angle -= sec_ptr.angle > SPEED*PI ? SPEED*PI : 0;
 }
