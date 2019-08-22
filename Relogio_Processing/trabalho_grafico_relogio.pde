@@ -106,7 +106,7 @@ void draw(){
   sec_ptr.angle += (SPEED*PI)/(30*FPS);
   pointer(sec_ptr,1);
 
-  // Imprecisão acumulada
+  // Evita overflow de ponto flutuante
   hor_ptr.angle -= hor_ptr.angle > SPEED*PI ? SPEED*PI : 0;
   min_ptr.angle -= min_ptr.angle > SPEED*PI ? SPEED*PI : 0;
   sec_ptr.angle -= sec_ptr.angle > SPEED*PI ? SPEED*PI : 0;
