@@ -1,0 +1,15 @@
+/* Rotação */
+R : matrix( [cos(fi),-sen(fi),0], [sen(fi),cos(fi),0], [0,0,1])$
+
+/* Translação
+T : matrix( [1,0,Tx], [0,1,Ty], [0,0,1])$
+*/
+
+C : [x,y,1]$    /* Centro */
+P : [x,y+k,1]$    /* Giro */
+
+TQ : matrix( [1,0,-x], [0,1,-y], [0,0,1])$    /* Translação de C para (0,0) */
+
+Result : (-TQ).(R.(TQ.P));
+
+P\' = transpose(Result)[1];
