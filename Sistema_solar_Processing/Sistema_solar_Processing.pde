@@ -38,8 +38,10 @@ float FPS = 60;
 void setup(){
 
   screen = new Vector2(600,600);
-  frameRate(FPS);
   size(600,600);
+
+  surface.setResizable(true);
+  frameRate(FPS);
 }
 
 void draw_terra(){  // Desenha a terra
@@ -69,7 +71,9 @@ void draw_sol(){  // Desenha o sol
 void draw(){
 
   // Erase the last
+  screen.y = height;
   background(0,0,0);
+  screen.x = width;
 
   // Dá a posição do sol e desenha
   sol.x = screen.x/2;
@@ -92,6 +96,6 @@ void draw(){
   draw_lua();
 
   // Evita overflow de ponto flutuante
-  terra.angle -= terra.angle > SPEED*PI ? SPEED*PI : 0;
-  lua.angle -= lua.angle > SPEED*PI ? SPEED*PI : 0;
+  terra.angle -= terra.angle > SPEED*PI*2 ? SPEED*PI*2 : 0;
+  lua.angle -= lua.angle > SPEED*PI*2 ? SPEED*PI*2 : 0;
 }

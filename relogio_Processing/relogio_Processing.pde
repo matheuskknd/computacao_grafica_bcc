@@ -38,8 +38,10 @@ float FPS = 1;
 void setup(){
 
   screen = new Vector2(600,600);
-  frameRate(FPS);
   size(600,600);
+
+  surface.setResizable(true);
+  frameRate(FPS);
 }
 
 void circulo( float x, float y, float diam){
@@ -64,6 +66,8 @@ void draw(){
 
   // Erase the last
   background(220,220,220);
+  screen.y = height;
+  screen.x = width;
 
   float pt_size = screen.smaller()*0.01;
   float raio = screen.smaller()*0.9;
@@ -107,7 +111,7 @@ void draw(){
   pointer(sec_ptr,1);
 
   // Evita overflow de ponto flutuante
-  hor_ptr.angle -= hor_ptr.angle > SPEED*PI ? SPEED*PI : 0;
-  min_ptr.angle -= min_ptr.angle > SPEED*PI ? SPEED*PI : 0;
-  sec_ptr.angle -= sec_ptr.angle > SPEED*PI ? SPEED*PI : 0;
+  hor_ptr.angle -= hor_ptr.angle > SPEED*PI*2 ? SPEED*PI*2 : 0;
+  min_ptr.angle -= min_ptr.angle > SPEED*PI*2 ? SPEED*PI*2 : 0;
+  sec_ptr.angle -= sec_ptr.angle > SPEED*PI*2 ? SPEED*PI*2 : 0;
 }
