@@ -45,15 +45,15 @@ assert H > 4, "H inválido...\n"
 
 # Returns a Vector3
 def point(i,j):
-	teta = pi * float(i)/V
+	teta = pi * float(i)/V - pi/2
 	fi = 2*pi * float(j)/H
 
 	# Fazer a equação
-	return (R*sin(teta),R*cos(fi),R*cos(teta))
+	return (R*cos(teta)*cos(fi),R*sin(teta),R*cos(teta)*sin(fi))
 
 # Returns a Vector2
 def tex_map(i,j):
-	return (float(j)/H,float(i)/V)
+	return (1-float(j)/H,1-float(i)/V)
 
 ################
 # Functions
@@ -64,7 +64,7 @@ def LoadTextures():
 
 	################################################################################
 	glBindTexture(GL_TEXTURE_2D, texture[0])
-	reader = png.Reader(filename='terra.png')
+	reader = png.Reader(filename='terra_baixa.png')
 	w, h, pixels, metadata = reader.read_flat()
 	if(metadata['alpha']):
 		modo = GL_RGBA
@@ -122,29 +122,29 @@ def DrawGLScene():
 	glBindTexture(GL_TEXTURE_2D, texture[0])
 	glBegin(GL_TRIANGLES)
 
-	for j in range(0,V-1):
+	for j in range(0,H):
 
 		# Triangulos por cima
-		for i in range(H):
-			glTexCoord2f(text_map(i,j))
-			glVertex3f(point(i,j))
+		for i in range(0,V):
+			glTexCoord2fv(tex_map(i,j))
+			glVertex3fv(point(i,j))
 
-			glTexCoord2f(text_map(i+1,j))
-			glVertex3f(point(i+1,j))
+			glTexCoord2fv(tex_map(i+1,j))
+			glVertex3fv(point(i+1,j))
 
-			glTexCoord2f(text_map(i,j+1))
-			glVertex3f(point(i,j+1))
+			glTexCoord2fv(tex_map(i,j+1))
+			glVertex3fv(point(i,j+1))
 
 		# Triangulos por baixo
-		for i in range(H):
-			glTexCoord2f(text_map(i,j+1))
-			glVertex3f(point(i,j+1))
+		for i in range(0,V):
+			glTexCoord2fv(tex_map(i,j+1))
+			glVertex3fv(point(i,j+1))
 
-			glTexCoord2f(text_map(i+1,j+1))
-			glVertex3f(point(i+1,j+1))
+			glTexCoord2fv(tex_map(i+1,j+1))
+			glVertex3fv(point(i+1,j+1))
 
-			glTexCoord2f(text_map(i+1,j))
-			glVertex3f(point(i+1,j))
+			glTexCoord2fv(tex_map(i+1,j))
+			glVertex3fv(point(i+1,j))
 
 	'''
 	# Front Face
@@ -187,8 +187,8 @@ def DrawGLScene():
 	glEnd()					# Done Drawing The Sfere
 
 	xrot  = xrot + 0.3		# X rotation
-	yrot = yrot + 0.3		# Y rotation
-	zrot = zrot + 0.3		# Z rotation
+	#yrot = yrot + 0.3		# Y rotation
+	#zrot = zrot + 0.3		# Z rotation
 
 	glutSwapBuffers()
 
