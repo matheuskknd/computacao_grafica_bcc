@@ -35,20 +35,10 @@
 	- Apenas uma maneira de dizer ao Blender que ambos os pipelines devem ser executados para se concluir propriedades
 	sobre um dado ponto no espaço em algum momento
 
-### Renderização de volume: a renderização (desenho) do volução ocorre atráves de uma "materialização" de vários planos dentro
-do domínio deste volume (samples no Blender), onde as texturas destes (cor de cada ponto) são dadas pelo processamento dos
-shaders volumétricos apresentados anteriormente. Por isso a rederização de volumes detalhados é tão cara. Pois quanto mais
-detalhes mais samples (planos) são necessários renderizar, e quanto mais planos, mais a quantidade de ponto tende à real
-área cúbica do domínio do volume.
+### Renderização de volume: a renderização (desenho) do volução ocorre atráves de uma "materialização" de vários planos dentro do domínio deste volume (samples no Blender), onde as texturas destes (cor de cada ponto) são dadas pelo processamento dos shaders volumétricos apresentados anteriormente. Por isso a rederização de volumes detalhados é tão cara. Pois quanto mais detalhes mais samples (planos) são necessários renderizar, e quanto mais planos, mais a quantidade de ponto tende à real área cúbica do domínio do volume.
 
 #### Nota: o domínio do volume é uma figura geométrica que limita a formação dos planos (samples) para renderização volumétrica.
 
-### Os exemplos na pasta 'RenderCycles' mostram a renderização de imagens 360º feitas com uma câmera panorâmica em modo
-equiretangular em diferentes coordenadas dentro do volume, apenas para fins demonstrativos. Cada imagem levou
-aproximadamente 20 minutos para ser renderizada com uma GPU Nvidia GTX 965m e 6 processadores em paralelo com resolução
-de 4096x2048 pixels (baixa para imagens 360º) e 32 samples (planos). Mostrando o quão custosa é esse tipo de
-renderização ainda hoje.
+### Os exemplos na pasta 'RenderCycles' mostram a renderização de imagens 360º feitas com uma câmera panorâmica em modo equiretangular em diferentes coordenadas dentro do volume, apenas para fins demonstrativos. Cada imagem levou aproximadamente 20 minutos para ser renderizada com uma GPU Nvidia GTX 965m e 6 processadores em paralelo com resolução de 4096x2048 pixels (baixa para imagens 360º) e 32 samples (planos). Mostrando o quão custosa é esse tipo de renderização ainda hoje.
 
-#### Nota 2: as imagens de exemplo que terminam em 'render.bmp' são as geradas diretamente pelo renderizador Cycles do Blender.
-Já as terminadas em 'dnoise.bmp' são pós processadas por uma [IA da Nvidia](https://developer.nvidia.com/optix-denoiser)
-apenas para remoção do ruído (noise).
+#### Nota 2: as imagens de exemplo que terminam em 'render.bmp' são as geradas diretamente pelo renderizador Cycles do Blender. Já as terminadas em 'dnoise.bmp' são pós processadas por uma [IA da Nvidia](https://developer.nvidia.com/optix-denoiser) apenas para remoção do ruído (noise).
